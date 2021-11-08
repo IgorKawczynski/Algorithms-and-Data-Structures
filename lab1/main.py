@@ -35,8 +35,12 @@ print(green_house.doors)
 print(green_house.color)
 print(green_house.type)
 print(green_house)  # wyswietli nam, ze jest to obiekt klasy house i przestrzen adresową //chyba ze ustawimy metodę str,
+<<<<<<< HEAD
                     # i wtedy wyswietli nam sie ustawiony przez nas komunikat, w ktorym mozemy przykladowo
                     # przygotowac tekst,
+=======
+                    # i wtedy wyswietli nam sie ustawiony przez nas komunikat, w ktorym mozemy przykladowo przygotowac tekst,
+>>>>>>> 496da082a4987dec1fa4e8279bc81a40432d23e7
                     # ktory bedzie przechowywal wartosci wszystkich atrybutow
 
 
@@ -67,4 +71,43 @@ def sum1(x: int, y: int) -> int:  # sum1, bcs its default name of function sum i
 assert sum1(2, 6) == 8
 # assert sum1(12, 6) == 8
 
+<<<<<<< HEAD
 # TO DO : (1) zrobic projekt - zad1(lista kierunkowa) - zad2(kolejka) - zad3(stos)
+=======
+# TO DO : (1) zrobic projekt - zad1(lista kierunkowa) - zad2(kolejka) - zad3(stos)
+
+
+class Node:
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+
+
+class LinkedList:
+    def __init__(self):
+        self.head: None
+        self.tail: None
+
+    def push(self, data2) -> None:
+        Node2 = Node(data2)
+        Node2.next = self.head
+        self.head = Node2
+
+
+list1 = LinkedList()
+list1.head = Node("Albert")
+ex1 = Node("Beowulf")
+ex2 = Node(124)
+list1.head.next = ex1  # polaczenie pierwszego wezla do drugiego
+ex1.next = ex2
+
+print(list1.head.data)
+print(list1.head.next)
+print(list1.head.next.data)
+print(list1.head.next.next.data)
+
+list1.push("START")
+print(list1.head.data)
+print(list1.head.next.data)
+
+>>>>>>> 496da082a4987dec1fa4e8279bc81a40432d23e7
