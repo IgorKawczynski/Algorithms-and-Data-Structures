@@ -69,7 +69,7 @@ class Stack:
     def push(self, data: Any) -> None:
         self._storage.push(data)
 
-    def pop(self):
+    def pop(self) -> Any:
         return self._storage.pop()
 
     def __len__(self) -> int:
@@ -87,7 +87,6 @@ class Stack:
 # TEST DLA STACK
 stack = Stack()
 assert len(stack) == 0
-
 
 # TEST DLA PUSH
 stack.push(3)

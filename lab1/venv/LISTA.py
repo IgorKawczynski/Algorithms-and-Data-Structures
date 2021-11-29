@@ -32,7 +32,7 @@ class LinkedList:
         temp = self.head
         if temp is None:
             return None
-        for i in range(at):  # powinno byc raczej at-1, wtedy zwroci wezeł o odpowiednim indeksie
+        for i in range(at):
             temp = temp.next
         return temp
 
@@ -93,7 +93,7 @@ class LinkedList:
             self.tail = after
             after.next = None
 
-    def __str__(self) -> str:
+    def __str__(self) -> str:  # OVERRIDE - przesloniecie(nadpisanie) metody domyslnej
         temp = self.head
         temp_list = ""
         if temp is None:
@@ -172,6 +172,7 @@ print(len(list1))
 # TEST DLA PUSTEJ LISTY
 print("\n")
 list2 = LinkedList()
+print("LENGTH OF LIST 2 :")
 print(str(list2))
 
 
