@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: dotGraph
+Version: 0.0.1
+Summary: Tool to create .dot/.gv files for Graphviz
+Home-page: UNKNOWN
+Author: Bernhard W. Radermacher
+Author-email: bernhard@radermacher.us
+License: MIT License
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# dotGraph
+
+Python tool for dot/graphviz
+
