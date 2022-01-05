@@ -35,7 +35,12 @@ print(green_house.doors)
 print(green_house.color)
 print(green_house.type)
 print(green_house)  # wyswietli nam, ze jest to obiekt klasy house i przestrzen adresową //chyba ze ustawimy metodę str,
+<<<<<<< HEAD
+                    # i wtedy wyswietli nam sie ustawiony przez nas komunikat, w ktorym mozemy przykladowo
+                    # przygotowac tekst,
+=======
                     # i wtedy wyswietli nam sie ustawiony przez nas komunikat, w ktorym mozemy przykladowo przygotowac tekst,
+>>>>>>> 496da082a4987dec1fa4e8279bc81a40432d23e7
                     # ktory bedzie przechowywal wartosci wszystkich atrybutow
 
 
@@ -66,6 +71,9 @@ def sum1(x: int, y: int) -> int:  # sum1, bcs its default name of function sum i
 assert sum1(2, 6) == 8
 # assert sum1(12, 6) == 8
 
+<<<<<<< HEAD
+# TO DO : (1) zrobic projekt - zad1(lista kierunkowa) - zad2(kolejka) - zad3(stos)
+=======
 # TO DO : (1) zrobic projekt - zad1(lista kierunkowa) - zad2(kolejka) - zad3(stos)
 
 
@@ -102,3 +110,4 @@ list1.push("START")
 print(list1.head.data)
 print(list1.head.next.data)
 
+>>>>>>> 496da082a4987dec1fa4e8279bc81a40432d23e7
