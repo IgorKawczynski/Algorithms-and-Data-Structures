@@ -155,7 +155,7 @@ class Edge:
 
     def __init__(self, source1, destination1, weight1):
         self.source = source1
-        self. destination = destination1
+        self.destination = destination1
         self.weight = weight1
 
     def __repr__(self):
@@ -166,18 +166,29 @@ class Graph:
     adjacencies: Dict[Vertex, List[Edge]]
 
     def __init__(self):
-        self.adjacencies = dict()
+        self.adjacencies = dict()  # słownik
 
     def create_vertex(self, data: Any):
-        self.adjacencies[Vertex(data, len(self.adjacencies))] = list()
+        self.adjacencies[Vertex(data, len(self.adjacencies))] = list()  # left side is key ( vertex ) while its value is adjacency list that is list()
         # # adding key
-        # self.adjacencies.pop(Vertex(data, len(self.adjacencies)))
+        # self.adjacencies.??add??(Vertex(data, len(self.adjacencies)))
         # # adding value to the key
         # self.adjacencies[Vertex(data, len(self.adjacencies))] = list()
         # return Vertex(data, len(self.adjacencies))
 
-    def get_vertex(self, key1) -> List[Edge]:
-        return self.adjacencies.get(key1)
+    def get_all_list_of_vertexes(self) -> List[Vertex]:
+        graph_vertices_keys1 = [x for x in self.adjacencies.keys()]
+        return graph_vertices_keys1
+
+    def get_all_neighbours(self) -> List[List[Edge]]:
+        graph_vertices_keys1 = [x for x in self.adjacencies.values()]
+        return graph_vertices_keys1
+
+    def get_neighbours(self, key_temp) -> List[Edge]:
+        return self.adjacencies.get(key_temp)
+
+    def get_adjacency(self):
+        return self.adjacencies
 
     def add_directed_edge(self, source: Vertex, destination: Vertex, weight: Optional[float] = None) -> None:
         if source not in self.adjacencies:
@@ -198,38 +209,37 @@ class Graph:
         # it's enum, we must find the name, not the value
         if edge.name == "directed":
             self.add_directed_edge(source, destination, weight)
-        else:
+        elif edge.name == "undirected":
             self.add_undirected_edge(source, destination, weight)
+        else:
+            raise ValueError("WRONG EDGE TYPE ! WRITE EdgeType(1) OR EdgeType(2) to work !! \n")
 
-    def traverse_bfs(self, vertex: Vertex, visit: Callable[[Any], None]):
+    def traverse_bfs(self, visit: Callable[[Any], None]):
+        vertex = list(self.adjacencies.keys())[0]  # rzutowanie do listy
         visited = []
-        visit(vertex)
-        visited.append(vertex)
         queue1 = Queue()
         queue1.enqueue(vertex)
         while len(queue1) != 0:
-            vertex = queue1.dequeue()
-            visited.append(vertex)
-            visit(vertex)
-            for x in self.adjacencies[vertex]:
-                if x not in visited:
-                    visited.append(vertex)
-                    queue1.enqueue(x)
+            v = queue1.dequeue()
+            visit(v)
+            for x in self.adjacencies[v]:
+                if x.destination not in visited:
+                    visited.append(x.destination)
+                    queue1.enqueue(x.destination)
                 else:
                     return
-        return visited
 
-    def dfs(self, vertex: Vertex, visited: List[Vertex], visit: Callable[[Any], None]):
+    def dfs(self, vertex: Vertex, visited: List[Vertex], visit):
         visit(vertex)
         visited.append(vertex)
-        for x in self.adjacencies[vertex]:
+        for x in self.adjacencies[vertex]:  # edgez
             if x.destination not in visited:
                 self.dfs(x.destination, visited, visit)
 
     def traverse_depth_first(self, visit):
-        graph_keys = [x for x in self.adjacencies.keys()]
+        vertex = list(self.adjacencies.keys())[0]
         visited = []
-        self.dfs(graph_keys[0], visited, visit)
+        self.dfs(vertex, visited, visit)
 
     def show(self):
         filename = "graph"
@@ -240,7 +250,7 @@ class Graph:
             self.show_support(x, graph, visited)
         # displaying the graph
         graph.render(filename=filename, directory='C:\\2022 studia\\PRZEDMIOTY\\AiSD\\LAB_IgorKawczynski\\Lab7',
-                     view=True, format="jpg")
+                     view=True)  # problems with jpg
 
     def show_support(self, vertex: Vertex, graph, visited: List):
         if vertex not in visited:
@@ -261,6 +271,13 @@ class Graph:
         for vertexes in self.adjacencies:
             temp = temp + "{}: v{} ----> {} \n".format(vertexes.data, vertexes.data, self.adjacencies[vertexes])
         return temp
+
+
+traversed_vertex_list = []
+
+
+def __visit(vertex):
+    traversed_vertex_list.append(vertex.data)
 
 
 # CREATING THE GRAPH
@@ -295,8 +312,24 @@ for x in graph1.adjacencies.keys():
 # DISPLAYING VERTICES WITH THEIR INDEXES AND THEIR ADJACENCY LIST
 print(graph1)
 
+# GETTING ALL OF THE VERTEXES IN GRAPH
+print(graph1.get_all_list_of_vertexes())
+
+# GETTING ALL OF THE NEIGHBOURS IN GRAPH
+print(graph1.get_all_neighbours())
+
+# GETTING THE NEIGHBOURS OF GIVEN VERTEX IN GRAPH
+print(graph1.get_neighbours(graph_vertices_keys[0]))
+
+# GETTING THE ADJACENCY LIST IN GRAPH
+print(graph1.get_adjacency())
+
+# USING TRAVERSE DEPTH FIRST
+graph1.traverse_depth_first(__visit)
+# PRINTING THE LIST OF ALL TRAVERSED VERTEXES
+print(traversed_vertex_list)
+# CLEARING THE LIST
+traversed_vertex_list.clear()
+
 # DISPLAYING THE GRAPH IN JPG
 graph1.show()
-
-
-
